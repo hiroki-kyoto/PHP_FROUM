@@ -1,0 +1,58 @@
+var response = "success";
+
+
+// test the actionList driven system
+	// fill the actionList
+	var actionList = [];
+	actionList.push({
+		// the action to be performed
+		action: actions.addObject,
+		// the setting of the argument list
+		setting: {parent:bb, object:(function(){fairy.shaun = new components.Ball('Shaun',50, '#30f543', 200,300, true,'#5600ff');return fairy.shaun;})()}
+	});
+	actionList.push({
+		action: actions.moveObjectByEquation,
+		setting: {o:/**fairy['Shaun']**/fairy.shaun,fx:function(t){return 200+38*t;}, fy:function(t){return 300+5*t*t;}, dt:6}
+	});
+	actionList.push({
+		action: actions.moveObjectByEquation,
+		setting:{
+					o:/**fairy['Shaun']**/fairy.shaun,fx:function(t){
+							return fairy.shaun.getPosition().x;
+						}, fy:function(t){
+							return fairy.shaun.getPosition().y-3*t;
+						}, dt:1
+				}
+	});
+	actionList.push({
+		action: actions.moveObjectByEquation,
+		setting:{
+					o:/**fairy['Shaun']**/fairy.shaun,fx:function(t){
+							return fairy.shaun.getPosition().x+3;
+						}, fy:function(t){
+							return fairy.shaun.getPosition().y+3*t;
+						}, dt:1
+				}
+	});
+	actionList.push({
+		action: actions.moveObjectByEquation,
+		setting:{
+					o:/**fairy['Shaun']**/fairy.shaun,fx:function(t){
+							return fairy.shaun.getPosition().x+3;
+						}, fy:function(t){
+							return fairy.shaun.getPosition().y-3*t;
+						}, dt:1
+				}
+	});
+	actionList.push({
+		action: actions.moveObjectByEquation,
+		setting:{
+					o:/**fairy['Shaun']**/fairy.shaun,fx:function(t){
+							return fairy.shaun.getPosition().x+3;
+						}, fy:function(t){
+							return fairy.shaun.getPosition().y+3*t;
+						}, dt:1
+				}
+	});
+	
+	System.drivenByActionList(actionList);
